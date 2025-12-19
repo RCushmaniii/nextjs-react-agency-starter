@@ -1,5 +1,3 @@
----
-
 # Next.js Agency Starter
 
 **A production-grade starter kit for modern agency, marketing, and portfolio websites.**
