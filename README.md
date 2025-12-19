@@ -1,14 +1,3 @@
-Awesome foundation. What you’re asking for now is **README-as-marketing + README-as-trust signal**, not just documentation. Below is a **fully rewritten README** that:
-
-- Uses **modern, minimal icons**
-- Clearly explains **why this starter exists**
-- Sells the **value**, not just the features
-- Reads like **good product copy**, not a spec sheet
-- Includes a **Live Demo URL section** (you can swap the link)
-- Positions this as a **serious client-ready starter**, not a toy
-
-You can paste this over your current README.md.
-
 ---
 
 # Next.js Agency Starter
