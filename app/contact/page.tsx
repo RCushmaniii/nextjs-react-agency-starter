@@ -1,145 +1,93 @@
-'use client'
-
-import { useState, FormEvent } from 'react'
 import { Metadata } from 'next'
-import { Container } from '@/components/layout/container'
 import { Section } from '@/components/layout/section'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
+import { Container } from '@/components/layout/container'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
+import NextLink from 'next/link'
+import { PageHero } from '@/components/layout/page-hero'
+import { ContactForm } from '@/components/contact/contact-form'
+
+export const metadata: Metadata = {
+  title: 'Contact',
+  description:
+    'Interested in working together? Tell us about your project and we will reply within 48 hours.',
+}
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: '',
-  })
-  const [errors, setErrors] = useState<Record<string, string>>({})
-  const [submitted, setSubmitted] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-
-  const validateForm = () => {
-    const newErrors: Record<string, string> = {}
-
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required'
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required'
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email'
-    }
-
-    if (!formData.message.trim()) {
-      newErrors.message = 'Message is required'
-    }
-
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
-  }
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault()
-
-    if (!validateForm()) {
-      return
-    }
-
-    setIsSubmitting(true)
-
-    // Simulate submission
-    console.log('Form submitted:', formData)
-
-    // Show success message after 1 second
-    setTimeout(() => {
-      setSubmitted(true)
-      setIsSubmitting(false)
-      setFormData({ name: '', email: '', company: '', message: '' })
-    }, 1000)
-  }
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-    // Clear error for this field when user starts typing
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: '' }))
-    }
-  }
-
   return (
     <>
+      <PageHero
+        title={<>Let&apos;s Start a Conversation.</>}
+        subtitle={
+          <>
+            Interested in working together? We should talk. Fill out the form below, and we&apos;ll
+            reply within 48 hours.
+          </>
+        }
+        imageSrc="/images/hero/contact-hero.jpg"
+        imageAlt="Contact page hero"
+        containerSize="md"
+        priorityImage
+      />
+
       <Section spacing="lg">
-        <Container size="md">
-          <div className="text-center mb-12">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">Get In Touch</h1>
-            <p className="text-xl text-foreground/70">
-              Have a project in mind? We'd love to hear from you. Fill out the form below and we'll get back to you shortly.
-            </p>
+        <Container size="lg">
+          <div className="grid gap-10 lg:grid-cols-12 items-start">
+            <div className="lg:col-span-7">
+              <ContactForm />
+            </div>
+
+            <aside className="lg:col-span-5 lg:sticky lg:top-24 space-y-6">
+              <Card>
+                <h3 className="text-xl font-semibold mb-3">What happens next?</h3>
+                <ol className="space-y-2 text-foreground/70">
+                  <li>1. We review your requirements.</li>
+                  <li>2. We schedule a discovery call (30 mins).</li>
+                  <li>3. We provide a proposal and roadmap.</li>
+                </ol>
+              </Card>
+
+              <Card>
+                <h3 className="text-xl font-semibold mb-3">Prefer email?</h3>
+                <p className="text-foreground/70">
+                  Reach us directly at{' '}
+                  <a className="underline underline-offset-4" href="mailto:hello@companyname.com">
+                    hello@companyname.com
+                  </a>
+                </p>
+
+                <div className="mt-6 space-y-3 text-sm text-foreground/70">
+                  <div>
+                    <div className="font-medium text-foreground">Social</div>
+                    <div className="mt-1 flex flex-wrap gap-x-4 gap-y-2">
+                      <a className="underline underline-offset-4" href="#">
+                        GitHub
+                      </a>
+                      <a className="underline underline-offset-4" href="#">
+                        Twitter
+                      </a>
+                      <a className="underline underline-offset-4" href="#">
+                        LinkedIn
+                      </a>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="font-medium text-foreground">Office</div>
+                    <div className="mt-1">123 Innovation Dr. Tech City, TC 90210</div>
+                  </div>
+                </div>
+
+                <div className="mt-6">
+                  <NextLink href="/work">
+                    <Button variant="outline" className="w-full">
+                      View Our Work
+                    </Button>
+                  </NextLink>
+                </div>
+              </Card>
+            </aside>
           </div>
-
-          {submitted && (
-            <Card className="mb-8 p-6 bg-secondary/10 border-secondary">
-              <p className="text-center text-secondary font-medium">
-                ✓ Thank you for your message! We'll be in touch soon.
-              </p>
-            </Card>
-          )}
-
-          <Card className="p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <Input
-                label="Name *"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                error={errors.name}
-                placeholder="John Doe"
-              />
-
-              <Input
-                label="Email *"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                error={errors.email}
-                placeholder="john@example.com"
-              />
-
-              <Input
-                label="Company"
-                name="company"
-                value={formData.company}
-                onChange={handleChange}
-                placeholder="Acme Inc."
-              />
-
-              <Textarea
-                label="Message *"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                error={errors.message}
-                placeholder="Tell us about your project..."
-                rows={6}
-              />
-
-              <Button
-                type="submit"
-                variant="primary"
-                className="w-full"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-              </Button>
-            </form>
-          </Card>
         </Container>
       </Section>
     </>

@@ -7,6 +7,7 @@ import '@/styles/globals.css'
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://agency.com'),
   title: {
     default: 'Agency - Production-Grade Web Solutions',
     template: '%s | Agency',
@@ -31,6 +32,14 @@ export const metadata: Metadata = {
     title: 'Agency - Production-Grade Web Solutions',
     description:
       'We build exceptional web experiences with Next.js, TypeScript, and modern design principles.',
+    images: [
+      {
+        url: '/images/logos/logo-square-black.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Agency',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
@@ -38,6 +47,7 @@ export const metadata: Metadata = {
     description:
       'We build exceptional web experiences with Next.js, TypeScript, and modern design principles.',
     creator: '@agency',
+    images: ['/images/logos/logo-square-black.jpg'],
   },
   robots: {
     index: true,

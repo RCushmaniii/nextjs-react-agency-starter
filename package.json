@@ -13,14 +13,14 @@
     "check": "npm run typecheck && npm run lint"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.0.0",
+    "gray-matter": "^4.0.3",
     "next": "^14.2.0",
+    "next-mdx-remote": "^4.4.1",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
-    "clsx": "^2.1.0",
-    "tailwind-merge": "^2.2.0",
-    "gray-matter": "^4.0.3",
-    "next-mdx-remote": "^4.4.1",
-    "framer-motion": "^11.0.0"
+    "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",

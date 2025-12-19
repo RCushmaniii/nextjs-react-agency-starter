@@ -1,4 +1,5 @@
 import NextLink from 'next/link'
+import Image from 'next/image'
 import { Container } from './container'
 
 const navigation = {
@@ -8,6 +9,15 @@ const navigation = {
     { name: 'Blog', href: '/blog' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
+  ],
+  product: [
+    { name: 'Home', href: '/' },
+    { name: 'Work', href: '/work' },
+    { name: 'Blog', href: '/blog' },
+  ],
+  docs: [
+    { name: 'About', href: '/about' },
+    { name: 'GitHub', href: 'https://github.com' },
   ],
   legal: [
     { name: 'Privacy Policy', href: '/privacy' },
@@ -53,55 +63,93 @@ const navigation = {
 
 export function Footer() {
   return (
-    <footer className="border-t border-foreground/10 bg-background">
+    <footer className="border-t border-foreground/10 bg-background dark:bg-black dark:border-white/10">
       <Container>
         <div className="py-12 md:py-16">
-          {/* Main Navigation */}
-          <div className="flex flex-wrap justify-center gap-6 mb-8">
-            {navigation.main.map((item) => (
+          <div className="grid gap-12 md:grid-cols-2">
+            {/* Brand */}
+            <div>
               <NextLink
-                key={item.name}
-                href={item.href}
-                className="text-sm text-foreground/70 hover:text-primary transition-colors"
+                href="/"
+                className="inline-flex items-center gap-3 hover:opacity-90 transition-opacity"
               >
-                {item.name}
+                <span className="sr-only">Company Name</span>
+                <Image
+                  src="/images/logos/logo-square-white.jpg"
+                  alt="Company Name logo"
+                  width={40}
+                  height={40}
+                  className="h-10 w-10 dark:hidden"
+                />
+                <Image
+                  src="/images/logos/logo-square-black.jpg"
+                  alt="Company Name logo"
+                  width={40}
+                  height={40}
+                  className="hidden h-10 w-10 dark:block"
+                />
+                <span className="text-sm font-semibold tracking-tight">Company Name</span>
               </NextLink>
-            ))}
-          </div>
 
-          {/* Social Links */}
-          <div className="flex justify-center gap-6 mb-8">
-            {navigation.social.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-foreground/70 hover:text-primary transition-colors"
-                aria-label={item.name}
-              >
-                {item.icon}
-              </a>
-            ))}
-          </div>
+              <p className="mt-4 max-w-md text-sm text-foreground/70">
+                Built by Robert Cushman for builders who want real auth + real database security.
+              </p>
 
-          {/* Legal Links */}
-          <div className="flex flex-wrap justify-center gap-6 mb-6">
-            {navigation.legal.map((item) => (
-              <NextLink
-                key={item.name}
-                href={item.href}
-                className="text-xs text-foreground/50 hover:text-primary transition-colors"
-              >
-                {item.name}
-              </NextLink>
-            ))}
-          </div>
+              <p className="mt-8 text-xs text-foreground/50">
+                &copy; {new Date().getFullYear()} Company Name. All rights reserved.
+              </p>
+            </div>
 
-          {/* Copyright */}
-          <p className="text-center text-xs text-foreground/50">
-            &copy; {new Date().getFullYear()} Agency. All rights reserved.
-          </p>
+            {/* Link Columns */}
+            <div className="grid gap-10 sm:grid-cols-3">
+              <div>
+                <h3 className="text-sm font-semibold">Docs</h3>
+                <div className="mt-4 flex flex-col gap-3">
+                  {navigation.docs.map((item) => (
+                    <NextLink
+                      key={item.name}
+                      href={item.href}
+                      className="text-sm text-foreground/70 hover:text-primary transition-colors"
+                      target={item.href.startsWith('http') ? '_blank' : undefined}
+                      rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    >
+                      {item.name}
+                    </NextLink>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-sm font-semibold">Product</h3>
+                <div className="mt-4 flex flex-col gap-3">
+                  {navigation.product.map((item) => (
+                    <NextLink
+                      key={item.name}
+                      href={item.href}
+                      className="text-sm text-foreground/70 hover:text-primary transition-colors"
+                    >
+                      {item.name}
+                    </NextLink>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-sm font-semibold">Legal</h3>
+                <div className="mt-4 flex flex-col gap-3">
+                  {navigation.legal.map((item) => (
+                    <NextLink
+                      key={item.name}
+                      href={item.href}
+                      className="text-sm text-foreground/70 hover:text-primary transition-colors"
+                    >
+                      {item.name}
+                    </NextLink>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </Container>
     </footer>

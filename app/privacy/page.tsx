@@ -1,6 +1,8 @@
 import { Metadata } from 'next'
 import { Container } from '@/components/layout/container'
 import { Section } from '@/components/layout/section'
+import { PageHero } from '@/components/layout/page-hero'
+import { Prose } from '@/components/content/prose'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
@@ -10,14 +12,21 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <>
+      <PageHero
+        title="Privacy Policy"
+        subtitle="How we collect, use, and protect your information."
+        imageSrc="/images/hero/home-hero.jpg"
+        imageAlt="Privacy policy hero"
+        containerSize="md"
+      />
+
       <Section spacing="lg">
         <Container size="md">
-          <h1 className="text-5xl font-bold mb-6">Privacy Policy</h1>
-          <p className="text-lg text-foreground/70 mb-12">
-            Last updated: {new Date().toLocaleDateString()}
+          <p className="text-sm text-foreground/60 mb-10">
+            Last updated: 2025-01-01
           </p>
 
-          <div className="prose prose-lg dark:prose-invert max-w-none">
+          <Prose>
             <h2>Introduction</h2>
             <p>
               This privacy policy outlines how we collect, use, and protect your personal information when you use our website and services.
@@ -64,7 +73,7 @@ export default function PrivacyPage() {
             <p>
               If you have any questions about this privacy policy or our data practices, please contact us through our contact form.
             </p>
-          </div>
+          </Prose>
         </Container>
       </Section>
     </>

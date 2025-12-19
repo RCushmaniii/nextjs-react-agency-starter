@@ -73,10 +73,10 @@ Create a new `.mdx` file in `content/blog/`:
 
 ```mdx
 ---
-title: "Your Post Title"
-description: "A brief description"
-date: "2024-01-15"
-tags: ["nextjs", "react"]
+title: 'Your Post Title'
+description: 'A brief description'
+date: '2024-01-15'
+tags: ['nextjs', 'react']
 draft: false
 ---
 
@@ -89,12 +89,12 @@ Create a new `.mdx` file in `content/work/`:
 
 ```mdx
 ---
-title: "Project Name"
-description: "Project description"
-date: "2024-01-15"
-client: "Client Name"
-role: "Your Role"
-tech: ["Next.js", "TypeScript"]
+title: 'Project Name'
+description: 'Project description'
+date: '2024-01-15'
+client: 'Client Name'
+role: 'Your Role'
+tech: ['Next.js', 'TypeScript']
 draft: false
 ---
 
@@ -109,8 +109,8 @@ Edit `styles/globals.css` to customize colors:
 
 ```css
 :root {
-  --color-primary: 59 130 246;      /* Your primary color */
-  --color-secondary: 16 185 129;    /* Your secondary color */
+  --color-primary: 59 130 246; /* Your primary color */
+  --color-secondary: 16 185 129; /* Your secondary color */
 }
 ```
 
@@ -217,9 +217,9 @@ SITE_URL=https://yourdomain.com
 
 ## 📖 Documentation
 
-- [CLAUDE.md](./CLAUDE.md) - AI assistant guide and architecture docs
-- [CLIENT_START.md](./CLIENT_START.md) - Client project customization checklist
-- [IMAGE_SOURCES.md](./IMAGE_SOURCES.md) - Image attribution guidelines
+- [CLAUDE.md](./docs/CLAUDE.md) - AI assistant guide and architecture docs
+- [CLIENT_START.md](./docs/CLIENT_START.md) - Client project customization checklist
+- [IMAGE_SOURCES.md](./docs/IMAGE_SOURCES.md) - Image attribution guidelines
 
 ## 🤝 Contributing
 
@@ -231,17 +231,17 @@ This is a starter template meant to be customized for your needs. Feel free to:
 
 ## 📄 License
 
-MIT License - feel free to use this template for personal or commercial projects.
+See [LICENSE](./LICENSE).
 
 ## 🆘 Support
 
-- Check the [CLAUDE.md](./CLAUDE.md) for detailed architecture information
+- Check the [CLAUDE.md](./docs/CLAUDE.md) for detailed architecture information
 - Review [Next.js Documentation](https://nextjs.org/docs)
 - Open an issue for bugs or questions
 
 ## 🎉 Getting Started with a Client Project
 
-See [CLIENT_START.md](./CLIENT_START.md) for a complete checklist to customize this template for a client project.
+See [CLIENT_START.md](./docs/CLIENT_START.md) for a complete checklist to customize this template for a client project.
 
 ---
 

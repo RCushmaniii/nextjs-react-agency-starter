@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react'
 import NextLink from 'next/link'
 import { usePathname } from 'next/navigation'
+import Image from 'next/image'
 import { Container } from './container'
-import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 const navItems = [
@@ -48,15 +48,38 @@ export function Navbar() {
   }, [pathname])
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-foreground/10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <nav
+      className={cn(
+        'sticky top-0 z-50 border-b',
+        darkMode
+          ? 'border-white/10 bg-black text-white'
+          : 'border-foreground/10 bg-white text-foreground'
+      )}
+    >
       <Container>
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-20 md:h-24 items-center justify-between">
           {/* Logo */}
           <NextLink
             href="/"
-            className="text-xl font-bold text-foreground hover:text-primary transition-colors"
+            className="flex items-center gap-3 hover:opacity-90 transition-opacity"
           >
-            Agency
+            <span className="sr-only">Company Name</span>
+            <Image
+              src="/images/logos/company-name-white-logo.jpg"
+              alt="Company Name"
+              width={420}
+              height={96}
+              className="h-14 md:h-24 w-auto dark:hidden"
+              priority
+            />
+            <Image
+              src="/images/logos/company-name-black-logo.jpg"
+              alt="Company Name"
+              width={420}
+              height={96}
+              className="hidden h-14 md:h-24 w-auto dark:block"
+              priority
+            />
           </NextLink>
 
           {/* Desktop Navigation */}
@@ -69,7 +92,9 @@ export function Navbar() {
                   'text-sm font-medium transition-colors hover:text-primary',
                   pathname === item.href
                     ? 'text-primary'
-                    : 'text-foreground/70'
+                    : darkMode
+                      ? 'text-white/70'
+                      : 'text-foreground/70'
                 )}
               >
                 {item.label}
@@ -79,7 +104,10 @@ export function Navbar() {
             {/* Dark Mode Toggle */}
             <button
               onClick={toggleDarkMode}
-              className="p-2 rounded-lg hover:bg-foreground/5 transition-colors"
+              className={cn(
+                'p-2 rounded-lg transition-colors',
+                darkMode ? 'hover:bg-white/10' : 'hover:bg-foreground/5'
+              )}
               aria-label="Toggle dark mode"
             >
               {darkMode ? (
@@ -118,7 +146,10 @@ export function Navbar() {
           <div className="flex md:hidden items-center gap-4">
             <button
               onClick={toggleDarkMode}
-              className="p-2 rounded-lg hover:bg-foreground/5 transition-colors"
+              className={cn(
+                'p-2 rounded-lg transition-colors',
+                darkMode ? 'hover:bg-white/10' : 'hover:bg-foreground/5'
+              )}
               aria-label="Toggle dark mode"
             >
               {darkMode ? (
@@ -154,7 +185,10 @@ export function Navbar() {
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg hover:bg-foreground/5 transition-colors"
+              className={cn(
+                'p-2 rounded-lg transition-colors',
+                darkMode ? 'hover:bg-white/10' : 'hover:bg-foreground/5'
+              )}
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? (
@@ -192,7 +226,12 @@ export function Navbar() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-foreground/10">
+          <div
+            className={cn(
+              'md:hidden py-4 border-t',
+              darkMode ? 'border-white/10' : 'border-foreground/10'
+            )}
+          >
             <div className="flex flex-col gap-4">
               {navItems.map((item) => (
                 <NextLink
@@ -202,7 +241,9 @@ export function Navbar() {
                     'text-sm font-medium transition-colors hover:text-primary',
                     pathname === item.href
                       ? 'text-primary'
-                      : 'text-foreground/70'
+                      : darkMode
+                        ? 'text-white/70'
+                        : 'text-foreground/70'
                   )}
                 >
                   {item.label}

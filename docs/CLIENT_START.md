@@ -288,7 +288,7 @@ Final checklist before launch:
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 - [CLAUDE.md](./CLAUDE.md) - Architecture guide
-- [README.md](./README.md) - Setup instructions
+- [README.md](../README.md) - Setup instructions
 
 ---
 
