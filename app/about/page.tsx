@@ -10,7 +10,7 @@ import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/ca
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Learn how we think, what we value, and the builders behind the work.',
+  description: 'Learn how we think, what we value, and the builder behind the work.',
 }
 
 export default function AboutPage() {
@@ -22,7 +22,7 @@ export default function AboutPage() {
       statsTitle: 'Signals that we ship',
       philosophyTitle: 'Our Philosophy',
       philosophyBody:
-        'The web has become complex. Our mission is to simplify it. We don\'t just write code; we build systems that enable your business to move faster. We prioritize long-term maintainability over short-term shortcuts.',
+        'The web has become complex. Our mission is to simplify it. We don\'t just write code; We build systems that enable your business to move faster. We prioritize long-term maintainability over short-term shortcuts.',
       valuesTitle: 'Principles that guide our work.',
       teamTitle: 'The Builders',
       teamSubtitle: 'A small team with big impact.',
@@ -59,7 +59,7 @@ export default function AboutPage() {
     {
       title: 'Uncompromising Quality',
       description:
-        'We don\'t do good enough. Every component is accessible, responsive, and built to last.',
+        'We don\'t do just good enough. Every component is accessible, responsive, and built to last.',
       Icon: (props: React.SVGProps<SVGSVGElement>) => (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...props}>
           <path
