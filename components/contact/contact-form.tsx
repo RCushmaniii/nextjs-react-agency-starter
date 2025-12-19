@@ -52,7 +52,7 @@ export function ContactForm() {
       <Card className="p-8 text-center bg-secondary/10 border-secondary">
         <h3 className="text-xl font-semibold">Message Received!</h3>
         <p className="mt-2 text-foreground/70">
-          Thanks for reaching out. We&apos;ve received your inquiry and will reply within 48 hours.
+          Thanks for reaching out. We have received your inquiry and will reply within 48 hours.
         </p>
         <button
           type="button"
