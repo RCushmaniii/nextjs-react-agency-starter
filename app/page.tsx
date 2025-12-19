@@ -41,7 +41,7 @@ export default function HomePage() {
         </div>
 
         <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
-          <Badge variant="primary">Production-ready Auth</Badge>
+          <Badge variant="default">Production-ready Auth</Badge>
           <Badge variant="default">Database security patterns</Badge>
           <Badge variant="default">Type-safe content + UI</Badge>
         </div>

@@ -41,8 +41,10 @@ export const mdxComponents = {
   ),
 
   // Links
-  a: ({ href = '', ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
-    <Link href={href} {...props} />
+  a: ({ href = '', children, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
+    <Link href={href} {...props}>
+      {children}
+    </Link>
   ),
 
   // Lists
@@ -93,16 +95,24 @@ export const mdxComponents = {
   ),
 
   // Image
-  img: ({ src = '', alt = '', ...props }: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    <Image
-      src={src}
-      alt={alt}
-      width={1200}
-      height={600}
-      className="rounded-lg my-6"
-      {...props}
-    />
-  ),
+  img: ({ src = '', alt = '', ...props }: React.ImgHTMLAttributes<HTMLImageElement>) => {
+    const rest: Record<string, unknown> = { ...props }
+    delete rest.width
+    delete rest.height
+    delete rest.sizes
+    delete rest.srcSet
+
+    return (
+      <Image
+        src={src}
+        alt={alt}
+        width={1200}
+        height={600}
+        className="rounded-lg my-6"
+        {...(rest as Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'width' | 'height' | 'sizes' | 'srcSet'>)}
+      />
+    )
+  },
 
   // Horizontal rule
   hr: ({ className, ...props }: React.HTMLAttributes<HTMLHRElement>) => (

@@ -2,6 +2,8 @@
 
 A production-grade starter template for building modern agency websites, marketing sites, and portfolios with Next.js, TypeScript, and Tailwind CSS.
 
+Built to be a strong baseline for real client work: clean layout primitives, a consistent hero system, MDX-powered content, and a production-ready contact pipeline.
+
 ## ✨ Features
 
 - ⚡ **Next.js 14** with App Router
@@ -9,11 +11,23 @@ A production-grade starter template for building modern agency websites, marketi
 - 📘 **TypeScript** in strict mode
 - 📝 **MDX** for blog posts and case studies
 - 🌗 **Dark mode** support with localStorage persistence
+- ✍️ **Beautiful long-form typography** via `@tailwindcss/typography` + a reusable `Prose` wrapper
 - 📱 **Fully responsive** mobile-first design
 - ♿ **Accessible** - WCAG AA compliant
 - 🚀 **Optimized** - 90+ Lighthouse scores
 - 🔍 **SEO-ready** - Metadata, sitemap, robots.txt
 - 📦 **Component library** - Reusable UI components
+
+## ✅ Why this template is a great starting point
+
+- **Ship faster without compromising quality**
+  - A cohesive, agency-style UI with patterns you can reuse across pages (hero, sections, cards, CTAs).
+- **Content workflow that scales**
+  - Add new case studies and blog posts by dropping `.mdx` files into `content/`.
+- **Marketing-site essentials included**
+  - SEO metadata, sitemap and robots routes, responsive navigation, polished footer, and dark mode.
+- **Real contact flow (not a fake form)**
+  - Client validation + server-side validation + server action + email delivery (Resend) + email template.
 
 ## 📋 Prerequisites
 
@@ -101,6 +115,14 @@ draft: false
 Your content here...
 ```
 
+### Cover Images
+
+Both the blog and work sections support cover images for listings and detail pages.
+
+- Put images in `public/images/` (recommended) or another public path.
+- Reference the image path from your MDX frontmatter (field name depends on the content type used by the template).
+- Prefer WebP/AVIF for performance.
+
 ## 🎨 Customization
 
 ### Brand Colors
@@ -120,7 +142,11 @@ All components are in `components/` and can be customized:
 
 - `components/ui/` - Primitive components
 - `components/layout/` - Layout components
-- `components/content/` - Content components
+- `components/content/` - Content components (MDX, Prose, etc.)
+
+### Long-form Content Styling (Prose)
+
+Large blocks of content (blog posts, case studies, privacy/legal pages) should be wrapped in the `Prose` component. This applies Tailwind Typography styles and supports dark mode via `dark:prose-invert`.
 
 ### Fonts
 
@@ -153,6 +179,14 @@ const yourFont = YourFont({ subsets: ['latin'] })
 3. Vercel will auto-detect Next.js and deploy
 4. Set environment variables in Vercel dashboard
 
+### Email Delivery (Resend)
+
+If you plan to use the built-in contact form in production:
+
+1. Create a Resend account and generate an API key
+2. Verify a sending domain (recommended)
+3. Configure the environment variables below on your deployment provider
+
 ### Other Platforms
 
 This is a standard Next.js application and can be deployed to:
@@ -170,7 +204,21 @@ Create a `.env` file with:
 
 ```env
 SITE_URL=https://yourdomain.com
+
+# Resend (contact form)
+RESEND_API_KEY=your_api_key
+
+# Where contact form messages should be delivered
+CONTACT_EMAIL=you@yourdomain.com
+
+# From header for outbound messages (should be from a verified domain)
+CONTACT_FROM="Your Studio <hello@yourdomain.com>"
 ```
+
+Notes:
+
+- `CONTACT_FROM` should typically be a verified sender/domain in Resend.
+- The contact form uses a server action and does not expose your API key to the browser.
 
 ## 📚 Tech Stack
 
@@ -178,6 +226,7 @@ SITE_URL=https://yourdomain.com
 - **Language**: [TypeScript](https://www.typescriptlang.org)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com)
 - **Content**: [MDX](https://mdxjs.com)
+- **Email**: [Resend](https://resend.com) + [React Email](https://react.email)
 - **Deployment**: [Vercel](https://vercel.com)
 
 ## 🎯 What's Included
@@ -212,6 +261,7 @@ SITE_URL=https://yourdomain.com
 - ✅ Image optimization
 - ✅ TypeScript strict mode
 - ✅ ESLint + Prettier
+- ✅ Production-friendly typography styles for legal/blog content
 - ✅ Responsive design
 - ✅ Accessibility features
 
