@@ -8,7 +8,7 @@ portfolio_featured: true
 title: "Nextjs React Agency Starter"
 tagline: "The Next.js React Agency Starter provides a clean, scalable, and production-ready foundation for building modern agency and portfolio websites using Next.js, React, and TypeScript."
 slug: "nextjs-react-agency-starter"
-category: "AI Automation"
+category: "Templates"
 tech_stack:
   - "TypeScript"
   - "Next.js"
