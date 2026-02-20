@@ -14,7 +14,6 @@ tech_stack:
   - "Next.js"
   - "React"
   - "Tailwind CSS"
-thumbnail: ""
 status: "Production"
 
 # === DETAIL PAGE ===
@@ -25,14 +24,12 @@ key_features:
   - "Everything You Need"
   - "Simple, Transparent Pricing"
   - "Ready for a Cleaner Desktop?"
-metrics: []
 
 # === LINKS ===
 demo_url: ""
 live_url: "https://nextjs-react-agency-starter.vercel.app/"
 
 # === OPTIONAL ===
-hero_images: []
 tags:
   - "nextjs"
   - "react"
