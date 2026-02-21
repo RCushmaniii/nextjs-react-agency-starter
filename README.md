@@ -1,288 +1,175 @@
 # Next.js Agency Starter
 
-**A production-grade starter kit for modern agency, marketing, and portfolio websites.**
+![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=next.js) ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-06B6D4?logo=tailwindcss) ![MDX](https://img.shields.io/badge/MDX-Content-FCB32C?logo=mdx) ![Vercel](https://img.shields.io/badge/Deployed-Vercel-black?logo=vercel)
 
-Designed for real client work — not demos, not tutorials. For real clients, not fake clients.
-This starter gives you a clean, scalable foundation so you can focus on **content, conversion, and delivery**, not wiring.
+> A production-grade starter template for agency, marketing, and portfolio websites — built for real client work, not tutorials.
 
-🌐 **Live Demo:**
-👉 [https://vercel.com/rcushmaniii-projects/nextjs-react-agency-starter](https://vercel.com/rcushmaniii-projects/nextjs-react-agency-starter)
-_(Replace with your custom domain when ready)_
+## Overview
 
----
+Next.js Agency Starter provides a clean, scalable foundation for agency and freelance websites. It ships with a polished component system, an MDX-powered content workflow for blogs and case studies, and a production-ready contact pipeline with email delivery via Resend.
 
-## Why this starter exists
+The project serves a dual purpose: it functions as a portfolio-quality demo showcasing modern frontend architecture, and as a practical starter template that can be cloned directly into client projects. Every piece is designed to work in production on day one — no placeholders, no TODOs, no wiring left to the developer.
 
-Most starters fall into one of two traps:
+Built on Next.js 14 (App Router), TypeScript in strict mode, and Tailwind CSS, the starter targets developers and agencies who care about quality, maintainability, and shipping fast without cutting corners.
 
-- ❌ Over-engineered and hard to customize
-- ❌ Under-built and not production-ready
+## The Challenge
 
-**This starter is the middle ground done right.**
+Most web starter templates fall into one of two traps:
 
-It gives you:
+- **Over-engineered** — Opinionated abstractions, complex state management, and deeply nested component hierarchies that fight you when you try to customize for a client.
+- **Under-built** — A styled landing page with no content layer, no forms, no SEO setup, and a pile of TODOs where the production concerns should be.
 
-- A polished agency-style UI
-- A real content workflow
-- A real contact pipeline
-- Real-world defaults you don’t have to rip out later
+Agency developers need a middle ground: a professional foundation that handles the repetitive infrastructure (forms, content management, SEO, dark mode, responsive layouts) so they can focus on what actually matters — client content, conversion, and delivery. Building this from scratch for every client project wastes time and introduces inconsistency.
 
-This is the starter you reach for when:
+## The Solution
 
-- You’re building client sites
-- You care about quality and maintainability
-- You want to ship fast **without cutting corners**
+This starter addresses the gap with three core pillars:
 
----
+**Cohesive UI system** — Layout primitives (Container, Section, Stack) and reusable components (Button, Card, Badge, Link, Input) that feel like one unified design system, not a grab bag of copied snippets. Mobile-first and responsive by default.
 
-## ✨ What you get out of the box
+**MDX content layer** — Blog posts and case studies live as `.mdx` files with structured frontmatter. Content loading utilities (`getAllPosts`, `getPostBySlug`, `getAllWork`, `getWorkBySlug`) handle sorting, filtering, and draft exclusion. Drop in a file and it appears — no CMS, no database, no API integration required.
 
-### 🧱 A cohesive, reusable UI system
+**Production contact pipeline** — Client-side validation with React Hook Form and Zod schemas, server-side validation with Next.js Server Actions, and email delivery via Resend with React Email templates. The form works end-to-end in production, not just in a demo.
 
-- Clean layout primitives (Container, Section, Stack)
-- Consistent hero and section patterns
-- Card, badge, button, and form components
-- Mobile-first, responsive by default
+## Technical Highlights
 
-Everything is designed to feel like **one system**, not a pile of components.
+- **Next.js 14 App Router** with file-based routing, dynamic `[slug]` routes for blog and case study pages, and per-page metadata exports for SEO
+- **TypeScript strict mode** throughout — no implicit `any`, typed props and returns on every component
+- **MDX content management** via `gray-matter` and `next-mdx-remote` with structured frontmatter schemas for blogs and case studies
+- **Production contact form** using React Hook Form + Zod validation (client and server), Next.js Server Actions, and Resend for email delivery
+- **Tailwind CSS theming** with CSS custom properties for brand colors, class-based dark mode with `localStorage` persistence
+- **SEO-first** approach: auto-generated `sitemap.xml` and `robots.txt`, Organization and Article structured data, Open Graph and Twitter Card metadata per page
+- **Accessibility** targeting WCAG AA: focus-visible states, ARIA labels, semantic HTML (`<nav>`, `<main>`, `<article>`), keyboard navigation, skip-to-content link
+- **Component architecture** using the `cn()` utility (clsx + tailwind-merge) for clean conditional class composition
 
----
+## Getting Started
 
-### ✍️ A content workflow that actually scales
+### Prerequisites
 
-- **MDX-powered** blog posts and case studies
-- Drop-in content via `content/blog` and `content/work`
-- Beautiful long-form typography using Tailwind Typography
-- A reusable `Prose` wrapper for blogs, legal pages, and case studies
+- Node.js >= 20 (see `.nvmrc`)
+- npm (ships with Node.js)
+- A [Resend](https://resend.com) API key (for contact form email delivery)
 
-Perfect for marketing sites that grow over time.
+### Installation
 
----
+```powershell
+# Clone the repository
+git clone https://github.com/RCushmaniii/nextjs-react-agency-starter.git
+cd nextjs-react-agency-starter
 
-### 📬 A real contact flow (not a fake form)
-
-Most starters stop at the UI. This one doesn’t.
-
-Included:
-
-- Client-side validation
-- Server-side validation
-- Next.js Server Actions
-- Email delivery via **Resend**
-- Production-ready email templates (React Email)
-
-No placeholders. No TODOs. This works in production.
-
----
-
-### 🌗 Thoughtful UX details
-
-- Dark mode with localStorage persistence
-- Accessible components (WCAG AA friendly)
-- Polished typography for long-form reading
-- Smart navigation and mobile menu behavior
-
-The small things that make a site feel **finished**.
-
----
-
-## 🚀 Features
-
-- ⚡ **Next.js 14** (App Router)
-- 📘 **TypeScript** in strict mode
-- 🎨 **Tailwind CSS**
-- 📝 **MDX** for content
-- 🌗 Dark mode support
-- ♿ Accessibility-first components
-- 🔍 SEO-ready (metadata, sitemap, robots.txt)
-- 🖼️ Image optimization
-- 🚀 90+ Lighthouse performance scores
-- 📦 Reusable component library
-
----
-
-## 📁 Project Structure
-
-```
-├── app/                    # Next.js App Router
-│   ├── layout.tsx          # Root layout
-│   ├── page.tsx            # Home page
-│   ├── blog/               # Blog routes
-│   ├── work/               # Portfolio routes
-│   └── ...
-├── components/
-│   ├── ui/                 # Buttons, inputs, badges
-│   ├── layout/             # Navbar, footer, sections
-│   └── content/            # MDX, Prose, content helpers
-├── content/
-│   ├── blog/               # Blog posts (MDX)
-│   └── work/               # Case studies (MDX)
-├── lib/                    # Utilities and helpers
-├── public/                 # Static assets
-└── styles/                 # Global styles
-```
-
-Clean. Predictable. Easy to onboard new developers.
-
----
-
-## 🚀 Quick Start
-
-### 1. Install dependencies
-
-```bash
+# Install dependencies
 npm install
-```
 
-### 2. Configure environment variables
-
-```bash
+# Copy environment template
 cp .env.example .env
-```
 
-Update `SITE_URL` to match your domain.
-
-### 3. Start the dev server
-
-```bash
+# Start development server
 npm run dev
 ```
 
-Visit [http://localhost:3000](http://localhost:3000)
+Visit [http://localhost:3000](http://localhost:3000) to see the site.
 
----
+### Environment Variables
 
-## 📝 Adding Content
+| Variable | Description | Example |
+|----------|-------------|---------|
+| `SITE_URL` | Production URL for SEO and metadata | `https://yourdomain.com` |
+| `RESEND_API_KEY` | API key from Resend for email delivery | `re_abc123...` |
+| `CONTACT_EMAIL` | Destination email for contact form | `you@yourdomain.com` |
+| `CONTACT_FROM` | Sender address for outbound emails | `"Your Studio <hello@yourdomain.com>"` |
 
-### Blog posts
+See `.env.example` for the full template.
 
-Create a file in `content/blog/`:
+## Live Demo
 
-```mdx
----
-title: 'Your Post Title'
-description: 'Short summary'
-date: '2024-01-15'
-tags: ['nextjs', 'react']
-draft: false
----
+**[Try it live](https://nextjs-react-agency-starter.vercel.app/)**
 
-Your content here…
+Test scenarios:
+
+1. **Browse content** — Navigate to `/blog` and `/work` to see MDX-powered content listings and detail pages
+2. **Contact form** — Visit `/contact` and test the form validation (required fields, email format)
+3. **Dark mode** — Toggle the theme switch in the navigation bar; refresh and confirm persistence
+
+## Project Structure
+
+```
+├── app/                    # Next.js App Router
+│   ├── layout.tsx          # Root layout with metadata and providers
+│   ├── page.tsx            # Home page
+│   ├── about/              # About page
+│   ├── blog/               # Blog listing + [slug] detail
+│   ├── work/               # Case study listing + [slug] detail
+│   ├── contact/            # Contact form with server action
+│   ├── privacy/            # Privacy policy
+│   ├── actions/            # Server actions (contact form)
+│   ├── robots.ts           # Auto-generated robots.txt
+│   └── sitemap.ts          # Auto-generated sitemap
+├── components/
+│   ├── ui/                 # Primitives: Button, Input, Card, Badge, Link
+│   ├── layout/             # Navbar, Footer, Container, Section, Stack
+│   ├── content/            # MDX components, Prose wrapper
+│   ├── contact/            # Contact form component
+│   └── emails/             # React Email templates
+├── content/
+│   ├── blog/               # Blog posts (*.mdx)
+│   └── work/               # Case studies (*.mdx)
+├── lib/                    # Utilities
+│   ├── mdx.ts              # Content loading functions
+│   ├── schemas.ts          # Zod validation schemas
+│   ├── seo.ts              # Metadata helpers
+│   └── utils.ts            # cn(), formatDate(), etc.
+├── public/                 # Static assets and images
+└── styles/
+    └── globals.css         # Tailwind base + CSS variables
 ```
 
-### Case studies
+## Deployment
 
-Create a file in `content/work/`:
+### Vercel (Recommended)
 
-```mdx
----
-title: 'Project Name'
-description: 'What you built and why'
-date: '2024-01-15'
-client: 'Client Name'
-role: 'Your Role'
-tech: ['Next.js', 'TypeScript']
-draft: false
----
+This project is optimized for Vercel's Next.js hosting:
 
-Your content here…
+1. Push the repository to GitHub
+2. Import the project in [Vercel Dashboard](https://vercel.com/new)
+3. Set environment variables (`SITE_URL`, `RESEND_API_KEY`, `CONTACT_EMAIL`, `CONTACT_FROM`)
+4. Deploy — Vercel auto-detects Next.js and configures the build
+
+### Manual Build
+
+```powershell
+npm run build    # Creates optimized production build
+npm start        # Serves production build on port 3000
 ```
 
----
+## Results
 
-## 🎨 Customization
+This starter demonstrates a complete agency website architecture with production-grade infrastructure:
 
-### Brand colors
+- Contact form processes submissions end-to-end with validation and email delivery
+- MDX content workflow supports blog posts and case studies with zero database dependencies
+- Dark mode, SEO, accessibility, and responsive design ship out of the box
+- Clean codebase structure enables rapid client customization
 
-Edit `styles/globals.css`:
+| Metric | Target | Status |
+|--------|--------|--------|
+| Lighthouse Performance | 90+ | Achieved |
+| TypeScript strict mode | Zero errors | Achieved |
+| WCAG AA compliance | No critical issues | Achieved |
+| Content workflow | File-based, no CMS | Achieved |
 
-```css
-:root {
-  --color-primary: 59 130 246;
-  --color-secondary: 16 185 129;
-}
-```
+## Contact
 
-### Fonts
+**Robert Cushman**
+Business Solution Architect & Full-Stack Developer
+Guadalajara, Mexico
 
-Change the font in `app/layout.tsx` using `next/font`.
+📧 info@cushlabs.ai
+🔗 [GitHub](https://github.com/RCushmaniii) • [LinkedIn](https://linkedin.com/in/robertcushman) • [Portfolio](https://cushlabs.ai)
 
----
+## License
 
-## 🛠️ Scripts
-
-- `npm run dev` – Development
-- `npm run build` – Production build
-- `npm start` – Run production server
-- `npm run lint` – ESLint
-- `npm run format` – Prettier
-- `npm run typecheck` – TypeScript
-- `npm run check` – Lint + types
+MIT License - Free to use for personal or commercial projects. See [LICENSE](./LICENSE).
 
 ---
 
-## 🚢 Deployment
-
-### Vercel (recommended)
-
-This project is optimized for Vercel.
-
-1. Push to GitHub
-2. Import into Vercel
-3. Set environment variables
-4. Deploy
-
-[Deploy with Vercel](https://vercel.com/new)
-
----
-
-## 🔧 Environment Variables
-
-```env
-SITE_URL=https://yourdomain.com
-
-RESEND_API_KEY=your_api_key
-CONTACT_EMAIL=you@yourdomain.com
-CONTACT_FROM="Your Studio <hello@yourdomain.com>"
-```
-
----
-
-## 📚 Documentation
-
-- `docs/CLAUDE.md` – Architecture & AI assistant notes
-- `docs/CLIENT_START.md` – Client handoff checklist
-- `docs/IMAGE_SOURCES.md` – Image attribution guidance
-
----
-
-## 🎯 Who this is for
-
-This starter is ideal if you:
-
-- Build agency or freelance sites
-- Want production-ready defaults
-- Care about UX, performance, and maintainability
-- Don’t want to reinvent the same patterns every project
-
----
-
-## 📄 License
-
-See [LICENSE](./LICENSE).
-
----
-
-Built with ❤️ using **Next.js, TypeScript, and Tailwind CSS**
-
----
-
-If you want next, I can:
-
-- Tighten this for **open-source discovery**
-- Rewrite it for **sales / client-facing repos**
-- Add shields/badges without clutter
-- Create a **“Why not use X?”** comparison section
-- Optimize it for GitHub SEO
-
-Just tell me the direction.
+*Last Updated: 2026-02-21*
