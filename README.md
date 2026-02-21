@@ -168,7 +168,7 @@ Guadalajara, Mexico
 
 ## License
 
-MIT License - Free to use for personal or commercial projects. See [LICENSE](./LICENSE).
+© 2025 Robert Cushman. All rights reserved. Free for educational and learning use. Commercial use requires written permission. See [LICENSE](./LICENSE).
 
 ---
 
