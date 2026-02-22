@@ -1,5 +1,4 @@
 import { Container } from '@/components/layout/container'
-import { Section } from '@/components/layout/section'
 import { Button } from '@/components/ui/button'
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -12,7 +11,24 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Gradient Fade Transition Demo',
   description:
-    'Smooth gradient dissolve transition between hero and content sections.',
+    'Smooth gradient dissolve transitions between every section — no hard edges anywhere.',
+}
+
+/**
+ * Gradient fade divider that dissolves one background into another.
+ * - "white-to-tint": white bg fading into foreground/5 tinted bg
+ * - "tint-to-white": foreground/5 tinted bg fading into white bg
+ */
+function GradientFade({ direction }: { direction: 'white-to-tint' | 'tint-to-white' }) {
+  return (
+    <div
+      className={
+        direction === 'white-to-tint'
+          ? 'h-24 md:h-32 bg-gradient-to-b from-white to-[rgb(var(--color-foreground)/0.05)] dark:from-[#0f172a] dark:to-[rgba(248,250,252,0.05)]'
+          : 'h-24 md:h-32 bg-gradient-to-b from-[rgb(var(--color-foreground)/0.05)] to-white dark:from-[rgba(248,250,252,0.05)] dark:to-[#0f172a]'
+      }
+    />
+  )
 }
 
 export default function GradientFadeDemoPage() {
@@ -21,9 +37,8 @@ export default function GradientFadeDemoPage() {
 
   return (
     <>
-      {/* Hero Section — custom (not PageHero) so we can place the gradient overlay at the bottom */}
+      {/* Hero Section */}
       <section className="relative overflow-hidden bg-foreground/5 py-24 md:py-32">
-        {/* Background image */}
         <div className="absolute inset-0">
           <Image
             src="/images/hero/home-hero.jpg"
@@ -34,7 +49,7 @@ export default function GradientFadeDemoPage() {
             className="object-cover"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/65 to-background/95 dark:from-background/70 dark:via-background/60 dark:to-background/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/30 dark:from-background/70 dark:via-background/55 dark:to-background/20" />
 
         <Container size="lg">
           <div className="relative mx-auto max-w-4xl text-center">
@@ -65,12 +80,12 @@ export default function GradientFadeDemoPage() {
           </div>
         </Container>
 
-        {/* Gradient Fade Transition: dissolves hero into next section */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-white dark:to-[#0f172a]" />
+        {/* Hero → Clients fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-white dark:to-[#0f172a]" />
       </section>
 
       {/* Clients Section */}
-      <Section spacing="md">
+      <section className="py-16 md:py-20">
         <Container>
           <div className="text-center mb-10">
             <h2 className="text-2xl md:text-3xl font-semibold">
@@ -105,10 +120,10 @@ export default function GradientFadeDemoPage() {
             ))}
           </div>
         </Container>
-      </Section>
+      </section>
 
-      {/* Services Section */}
-      <Section spacing="lg">
+      {/* Capabilities Section */}
+      <section className="py-20 md:py-28">
         <Container>
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Capabilities</h2>
@@ -161,10 +176,13 @@ export default function GradientFadeDemoPage() {
             </Card>
           </div>
         </Container>
-      </Section>
+      </section>
+
+      {/* Fade: white → tinted */}
+      <GradientFade direction="white-to-tint" />
 
       {/* Process Section */}
-      <Section spacing="lg" className="bg-foreground/5">
+      <section className="py-20 md:py-28 bg-foreground/5">
         <Container>
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Our Process</h2>
@@ -188,10 +206,13 @@ export default function GradientFadeDemoPage() {
             ))}
           </div>
         </Container>
-      </Section>
+      </section>
+
+      {/* Fade: tinted → white */}
+      <GradientFade direction="tint-to-white" />
 
       {/* Featured Work Section */}
-      <Section spacing="lg">
+      <section className="py-20 md:py-28">
         <Container>
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Featured Work</h2>
@@ -237,10 +258,10 @@ export default function GradientFadeDemoPage() {
             </NextLink>
           </div>
         </Container>
-      </Section>
+      </section>
 
       {/* Latest Articles Section */}
-      <Section spacing="lg">
+      <section className="py-20 md:py-28">
         <Container>
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Latest Articles</h2>
@@ -289,10 +310,13 @@ export default function GradientFadeDemoPage() {
             </NextLink>
           </div>
         </Container>
-      </Section>
+      </section>
+
+      {/* Fade: white → tinted */}
+      <GradientFade direction="white-to-tint" />
 
       {/* Testimonials Section */}
-      <Section spacing="lg" className="bg-foreground/5">
+      <section className="py-20 md:py-28 bg-foreground/5">
         <Container>
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">What Clients Say</h2>
@@ -354,10 +378,13 @@ export default function GradientFadeDemoPage() {
             ))}
           </div>
         </Container>
-      </Section>
+      </section>
+
+      {/* Fade: tinted → white */}
+      <GradientFade direction="tint-to-white" />
 
       {/* CTA Section */}
-      <Section spacing="lg">
+      <section className="py-20 md:py-28">
         <Container>
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-4xl font-bold mb-6">This Is Not a Sales Call</h2>
@@ -371,7 +398,7 @@ export default function GradientFadeDemoPage() {
             </NextLink>
           </div>
         </Container>
-      </Section>
+      </section>
     </>
   )
 }
