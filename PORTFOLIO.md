@@ -23,9 +23,19 @@ tags:
   - "agency"
   - "resend"
 
-thumbnail: ""
-hero_images: []
-demo_video_url: ""
+thumbnail: "/images/portfolio/nextjs-react-agency-starter-thumb.jpg"
+hero_images:
+  - "/images/portfolio/nextjs-react-agency-starter-01.png"
+  - "/images/portfolio/nextjs-react-agency-starter-02.png"
+  - "/images/portfolio/nextjs-react-agency-starter-03.png"
+  - "/images/portfolio/nextjs-react-agency-starter-04.png"
+  - "/images/portfolio/nextjs-react-agency-starter-05.png"
+  - "/images/portfolio/nextjs-react-agency-starter-06.png"
+  - "/images/portfolio/nextjs-react-agency-starter-07.png"
+  - "/images/portfolio/nextjs-react-agency-starter-08.png"
+  - "/images/portfolio/nextjs-react-agency-starter-09.png"
+demo_video_url: "/video/nextjs-react-agency-starter-brief.mp4"
+demo_video_poster: "/video/nextjs-react-agency-starter-brief-poster.jpg"
 
 live_url: "https://nextjs-react-agency-starter.vercel.app/"
 demo_url: "https://nextjs-react-agency-starter.vercel.app/"
