@@ -4,6 +4,12 @@
 
 > A production-grade starter template for agency, marketing, and portfolio websites — built for real client work, not tutorials.
 
+**[Try it live](https://nextjs-react-agency-starter.vercel.app/)**
+
+<p align="center">
+  <img src="public/images/portfolio/nextjs-react-agency-starter-thumb.jpg" alt="Next.js Agency Starter — Production-grade agency website template" width="100%">
+</p>
+
 ## Overview
 
 Next.js Agency Starter provides a clean, scalable foundation for agency and freelance websites. It ships with a polished component system, an MDX-powered content workflow for blogs and case studies, and a production-ready contact pipeline with email delivery via Resend.
