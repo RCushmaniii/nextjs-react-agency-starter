@@ -1,6 +1,5 @@
 import { Container } from '@/components/layout/container'
 import { Section } from '@/components/layout/section'
-import { PageHero } from '@/components/layout/page-hero'
 import { Button } from '@/components/ui/button'
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -22,43 +21,56 @@ export default function TechGlowDemoPage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <PageHero
-        title={
-          <>
-            Precision at the <span className="text-primary">Edge</span>
-          </>
-        }
-        subtitle="Calibrating high-contrast visual dividers. This variation tests the use of targeted, performance-light CSS gradients to create subtle focal points and distinct logical separation for technical tooling."
-        imageSrc="/images/hero/home-hero.jpg"
-        imageAlt="Tech glow demo hero"
-        priorityImage
-      >
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <NextLink href="/work">
-            <Button variant="primary" className="w-full sm:w-auto">
-              View Our Work
-            </Button>
-          </NextLink>
-          <NextLink href="/contact">
-            <Button variant="outline" className="w-full sm:w-auto">
-              Book a Call
-            </Button>
-          </NextLink>
+      {/* Hero Section — custom so the glow line sits against visible hero image */}
+      <section className="relative bg-foreground/5 py-24 md:py-32">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero/home-hero.jpg"
+            alt="Tech glow demo hero"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
         </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/50 dark:from-background/70 dark:via-background/55 dark:to-background/40" />
 
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
-          <Badge variant="default">Production-ready Auth</Badge>
-          <Badge variant="default">Database security patterns</Badge>
-          <Badge variant="default">Type-safe content + UI</Badge>
-        </div>
-      </PageHero>
+        <Container size="lg">
+          <div className="relative mx-auto max-w-4xl text-center">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-balance">
+              Precision at the <span className="text-primary">Edge</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-foreground/80 mb-8 text-balance">
+              Calibrating high-contrast visual dividers. This variation tests the use of targeted, performance-light CSS gradients to create subtle focal points and distinct logical separation for technical tooling.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <NextLink href="/work">
+                <Button variant="primary" className="w-full sm:w-auto">
+                  View Our Work
+                </Button>
+              </NextLink>
+              <NextLink href="/contact">
+                <Button variant="outline" className="w-full sm:w-auto">
+                  Book a Call
+                </Button>
+              </NextLink>
+            </div>
 
-      {/* Tech Glow Transition: glowing 1px gradient divider */}
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+              <Badge variant="default">Production-ready Auth</Badge>
+              <Badge variant="default">Database security patterns</Badge>
+              <Badge variant="default">Type-safe content + UI</Badge>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Tech Glow Transition: glowing gradient divider against visible hero edge */}
       <div className="relative">
         <div
           className="h-px bg-gradient-to-r from-transparent via-primary to-transparent"
-          style={{ boxShadow: '0 0 8px rgba(59,130,246,0.4), 0 0 24px rgba(59,130,246,0.15)' }}
+          style={{ boxShadow: '0 0 12px rgba(59,130,246,0.5), 0 0 32px rgba(59,130,246,0.2), 0 0 4px rgba(59,130,246,0.8)' }}
         />
       </div>
 

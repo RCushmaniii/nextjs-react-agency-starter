@@ -1,6 +1,5 @@
 import { Container } from '@/components/layout/container'
 import { Section } from '@/components/layout/section'
-import { PageHero } from '@/components/layout/page-hero'
 import { Button } from '@/components/ui/button'
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -22,42 +21,55 @@ export default function GlassmorphismDemoPage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <PageHero
-        title={
-          <>
-            Elevate Your <span className="text-primary">Interface</span>
-          </>
-        }
-        subtitle="Testing spatial relationships and translucent layering. This component evaluates how frosted glass effects perform over complex, dynamic gradient meshes without sacrificing rendering speed."
-        imageSrc="/images/hero/home-hero.jpg"
-        imageAlt="Glassmorphism demo hero"
-        priorityImage
-      >
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <NextLink href="/work">
-            <Button variant="primary" className="w-full sm:w-auto">
-              View Our Work
-            </Button>
-          </NextLink>
-          <NextLink href="/contact">
-            <Button variant="outline" className="w-full sm:w-auto">
-              Book a Call
-            </Button>
-          </NextLink>
+      {/* Hero Section — custom so glass card can overlap into visible hero image */}
+      <section className="relative bg-foreground/5 py-24 md:py-32 pb-40 md:pb-52">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero/home-hero.jpg"
+            alt="Glassmorphism demo hero"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
         </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/30 dark:from-background/70 dark:via-background/55 dark:to-background/20" />
 
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
-          <Badge variant="default">Production-ready Auth</Badge>
-          <Badge variant="default">Database security patterns</Badge>
-          <Badge variant="default">Type-safe content + UI</Badge>
-        </div>
-      </PageHero>
+        <Container size="lg">
+          <div className="relative mx-auto max-w-4xl text-center">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-balance">
+              Elevate Your <span className="text-primary">Interface</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-foreground/80 mb-8 text-balance">
+              Testing spatial relationships and translucent layering. This component evaluates how frosted glass effects perform over complex, dynamic gradient meshes without sacrificing rendering speed.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <NextLink href="/work">
+                <Button variant="primary" className="w-full sm:w-auto">
+                  View Our Work
+                </Button>
+              </NextLink>
+              <NextLink href="/contact">
+                <Button variant="outline" className="w-full sm:w-auto">
+                  Book a Call
+                </Button>
+              </NextLink>
+            </div>
 
-      {/* Glassmorphism Transition: Clients section overlaps hero with frosted glass */}
-      <Section spacing="md" className="relative z-10 -mt-16">
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+              <Badge variant="default">Production-ready Auth</Badge>
+              <Badge variant="default">Database security patterns</Badge>
+              <Badge variant="default">Type-safe content + UI</Badge>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Glassmorphism Transition: Frosted glass card overlaps into the hero image */}
+      <div className="relative z-10 -mt-28 md:-mt-36 mb-8">
         <Container>
-          <div className="rounded-2xl border border-white/20 dark:border-slate-800/50 bg-white/70 dark:bg-slate-950/70 backdrop-blur-lg p-8 md:p-12">
+          <div className="rounded-2xl border border-white/20 dark:border-slate-800/50 bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl shadow-xl p-8 md:p-12">
             <div className="text-center mb-10">
               <h2 className="text-2xl md:text-3xl font-semibold">
                 Trusted by teams building the future.
@@ -92,7 +104,7 @@ export default function GlassmorphismDemoPage() {
             </div>
           </div>
         </Container>
-      </Section>
+      </div>
 
       {/* Services Section */}
       <Section spacing="lg">

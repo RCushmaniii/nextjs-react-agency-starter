@@ -1,6 +1,5 @@
 import { Container } from '@/components/layout/container'
 import { Section } from '@/components/layout/section'
-import { PageHero } from '@/components/layout/page-hero'
 import { Button } from '@/components/ui/button'
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -22,52 +21,65 @@ export default function SvgSweepDemoPage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <PageHero
-        title={
-          <>
-            Dynamic <span className="text-primary">Momentum</span>
-          </>
-        }
-        subtitle="Measuring the visual impact of asymmetrical layouts. By utilizing lightweight inline SVGs, we test how breaking the horizontal grid drives the user's eye diagonally down the page."
-        imageSrc="/images/hero/home-hero.jpg"
-        imageAlt="SVG sweep demo hero"
-        priorityImage
-      >
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <NextLink href="/work">
-            <Button variant="primary" className="w-full sm:w-auto">
-              View Our Work
-            </Button>
-          </NextLink>
-          <NextLink href="/contact">
-            <Button variant="outline" className="w-full sm:w-auto">
-              Book a Call
-            </Button>
-          </NextLink>
-        </div>
-
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
-          <Badge variant="default">Production-ready Auth</Badge>
-          <Badge variant="default">Database security patterns</Badge>
-          <Badge variant="default">Type-safe content + UI</Badge>
-        </div>
-      </PageHero>
-
-      {/* SVG Sweep Transition: asymmetric curve between hero and clients */}
-      <div className="relative -mt-1">
-        <svg
-          viewBox="0 0 1440 64"
-          preserveAspectRatio="none"
-          className="block w-full h-12 md:h-16"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0,0 C360,64 720,16 1440,48 L1440,64 L0,64 Z"
-            className="fill-white dark:fill-[#0f172a]"
+      {/* Hero Section — custom so SVG can overlap the hero image */}
+      <section className="relative bg-foreground/5 py-24 md:py-32 pb-32 md:pb-40">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero/home-hero.jpg"
+            alt="SVG sweep demo hero"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
           />
-        </svg>
-      </div>
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/40 dark:from-background/70 dark:via-background/55 dark:to-background/30" />
+
+        <Container size="lg">
+          <div className="relative mx-auto max-w-4xl text-center">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-balance">
+              Dynamic <span className="text-primary">Momentum</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-foreground/80 mb-8 text-balance">
+              Measuring the visual impact of asymmetrical layouts. By utilizing lightweight inline SVGs, we test how breaking the horizontal grid drives the user&apos;s eye diagonally down the page.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <NextLink href="/work">
+                <Button variant="primary" className="w-full sm:w-auto">
+                  View Our Work
+                </Button>
+              </NextLink>
+              <NextLink href="/contact">
+                <Button variant="outline" className="w-full sm:w-auto">
+                  Book a Call
+                </Button>
+              </NextLink>
+            </div>
+
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+              <Badge variant="default">Production-ready Auth</Badge>
+              <Badge variant="default">Database security patterns</Badge>
+              <Badge variant="default">Type-safe content + UI</Badge>
+            </div>
+          </div>
+        </Container>
+
+        {/* SVG Sweep Transition: asymmetric curve cutting into the hero */}
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg
+            viewBox="0 0 1440 96"
+            preserveAspectRatio="none"
+            className="block w-full h-16 md:h-24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0,48 C240,96 480,0 720,64 C960,128 1200,32 1440,72 L1440,96 L0,96 Z"
+              className="fill-white dark:fill-[#0f172a]"
+            />
+          </svg>
+        </div>
+      </section>
 
       {/* Clients Section */}
       <Section spacing="md">
