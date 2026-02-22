@@ -1,6 +1,4 @@
 import { Container } from '@/components/layout/container'
-import { Section } from '@/components/layout/section'
-import { PageHero } from '@/components/layout/page-hero'
 import { Button } from '@/components/ui/button'
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -9,6 +7,18 @@ import Image from 'next/image'
 import { getAllPosts, getAllWork } from '@/lib/mdx'
 import { formatDate } from '@/lib/utils'
 
+function GradientFade({ direction }: { direction: 'white-to-tint' | 'tint-to-white' }) {
+  return (
+    <div
+      className={
+        direction === 'white-to-tint'
+          ? 'h-24 md:h-32 bg-gradient-to-b from-white to-[rgb(var(--color-foreground)/0.05)] dark:from-[#0f172a] dark:to-[rgba(248,250,252,0.05)]'
+          : 'h-24 md:h-32 bg-gradient-to-b from-[rgb(var(--color-foreground)/0.05)] to-white dark:from-[rgba(248,250,252,0.05)] dark:to-[#0f172a]'
+      }
+    />
+  )
+}
+
 export default function HomePage() {
   const featuredWork = getAllWork().slice(0, 3)
   const latestPosts = getAllPosts().slice(0, 3)
@@ -16,39 +26,54 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <PageHero
-        title={
-          <>
-            Ship <span className="text-primary">Production-Grade</span> Software at Speed.
-          </>
-        }
-        subtitle="Performance-obsessed web experiences crafted with Next.js, TypeScript, and Tailwind. We bridge the gap between design and engineering."
-        imageSrc="/images/hero/home-hero.jpg"
-        imageAlt="Homepage hero"
-        priorityImage
-      >
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <NextLink href="/work">
-            <Button variant="primary" className="w-full sm:w-auto">
-              View Our Work
-            </Button>
-          </NextLink>
-          <NextLink href="/contact">
-            <Button variant="outline" className="w-full sm:w-auto">
-              Book a Call
-            </Button>
-          </NextLink>
+      <section className="relative bg-foreground/5 py-24 md:py-32">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero/home-hero.jpg"
+            alt="Homepage hero"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
         </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/30 dark:from-background/70 dark:via-background/55 dark:to-background/20" />
 
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
-          <Badge variant="default">Production-ready Auth</Badge>
-          <Badge variant="default">Database security patterns</Badge>
-          <Badge variant="default">Type-safe content + UI</Badge>
-        </div>
-      </PageHero>
+        <Container size="lg">
+          <div className="relative mx-auto max-w-4xl text-center">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-balance">
+              Ship <span className="text-primary">Production-Grade</span> Software at Speed.
+            </h1>
+            <p className="text-xl md:text-2xl text-foreground/80 mb-8 text-balance">
+              Performance-obsessed web experiences crafted with Next.js, TypeScript, and Tailwind. We bridge the gap between design and engineering.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <NextLink href="/work">
+                <Button variant="primary" className="w-full sm:w-auto">
+                  View Our Work
+                </Button>
+              </NextLink>
+              <NextLink href="/contact">
+                <Button variant="outline" className="w-full sm:w-auto">
+                  Book a Call
+                </Button>
+              </NextLink>
+            </div>
+
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+              <Badge variant="default">Production-ready Auth</Badge>
+              <Badge variant="default">Database security patterns</Badge>
+              <Badge variant="default">Type-safe content + UI</Badge>
+            </div>
+          </div>
+        </Container>
+
+        {/* Hero → Clients fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-white dark:to-[#0f172a]" />
+      </section>
 
       {/* Clients Section */}
-      <Section spacing="md">
+      <section className="py-16 md:py-20">
         <Container>
           <div className="text-center mb-10">
             <h2 className="text-2xl md:text-3xl font-semibold">Trusted by forward-thinking teams</h2>
@@ -81,10 +106,10 @@ export default function HomePage() {
             ))}
           </div>
         </Container>
-      </Section>
+      </section>
 
-      {/* Services Section */}
-      <Section spacing="lg">
+      {/* Capabilities Section */}
+      <section className="py-20 md:py-28">
         <Container>
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Capabilities</h2>
@@ -137,10 +162,13 @@ export default function HomePage() {
             </Card>
           </div>
         </Container>
-      </Section>
+      </section>
+
+      {/* Fade: white → tinted */}
+      <GradientFade direction="white-to-tint" />
 
       {/* Process Section */}
-      <Section spacing="lg" className="bg-foreground/5">
+      <section className="py-20 md:py-28 bg-foreground/5">
         <Container>
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Our Process</h2>
@@ -164,10 +192,13 @@ export default function HomePage() {
             ))}
           </div>
         </Container>
-      </Section>
+      </section>
+
+      {/* Fade: tinted → white */}
+      <GradientFade direction="tint-to-white" />
 
       {/* Featured Work Section */}
-      <Section spacing="lg">
+      <section className="py-20 md:py-28">
         <Container>
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Featured Work</h2>
@@ -213,10 +244,10 @@ export default function HomePage() {
             </NextLink>
           </div>
         </Container>
-      </Section>
+      </section>
 
       {/* Latest Articles Section */}
-      <Section spacing="lg">
+      <section className="py-20 md:py-28">
         <Container>
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Latest Articles</h2>
@@ -265,10 +296,13 @@ export default function HomePage() {
             </NextLink>
           </div>
         </Container>
-      </Section>
+      </section>
+
+      {/* Fade: white → tinted */}
+      <GradientFade direction="white-to-tint" />
 
       {/* Testimonials Section */}
-      <Section spacing="lg" className="bg-foreground/5">
+      <section className="py-20 md:py-28 bg-foreground/5">
         <Container>
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">What Clients Say</h2>
@@ -330,10 +364,13 @@ export default function HomePage() {
             ))}
           </div>
         </Container>
-      </Section>
+      </section>
+
+      {/* Fade: tinted → white */}
+      <GradientFade direction="tint-to-white" />
 
       {/* CTA Section */}
-      <Section spacing="lg">
+      <section className="py-20 md:py-28">
         <Container>
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-4xl font-bold mb-6">This Is Not a Sales Call</h2>
@@ -347,7 +384,7 @@ export default function HomePage() {
             </NextLink>
           </div>
         </Container>
-      </Section>
+      </section>
     </>
   )
 }
