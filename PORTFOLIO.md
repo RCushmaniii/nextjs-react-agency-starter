@@ -81,6 +81,23 @@ tags:
   - "agency"
   - "resend"
 date_completed: "2025-12"
+
+# === REPO HEALTH STATUS ===
+# Last audited: 2026-04-04
+# Standards defined in: operating-system/delivery/repo-health-baseline.md
+health_status:
+  sentry: "-"
+  testing: "-"
+  ci_cd: "Y"
+  health_endpoint: "n/a"
+  security_headers: "-"
+  rate_limiting: "n/a"
+  env_validation: "-"
+  analytics: "DEFERRED"
+  structured_logging: "-"
+  dependabot: "Y"
+  secret_scanning: "Y"
+  db_backup: "-"
 ---
 
 ## Overview
